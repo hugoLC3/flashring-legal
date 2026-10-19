@@ -158,7 +158,7 @@ footer nav a{font-size:14px; font-weight:700}
   <div class="meta">
     <span><strong>Responsable du traitement</strong> — Tristan Leveugle, personne physique. Voir aussi les <a href="mentions-legales.html">mentions légales</a>.</span>
     <span><strong>Contact</strong> — hugodrone.2025@gmail.com</span>
-    <span><strong>Dernière mise à jour</strong> — 20 septembre 2026</span>
+    <span><strong>Dernière mise à jour</strong> — 19 octobre 2026</span>
   </div>
 
   <nav class="toc" aria-label="Sommaire">
@@ -176,6 +176,8 @@ footer nav a{font-size:14px; font-weight:700}
       <li><a href="#securite">Sécurité</a></li>
       <li><a href="#droits">Tes droits</a></li>
       <li><a href="#transferts">Transferts hors UE</a></li>
+      <li><a href="#etablissement">Connexion à ton établissement</a></li>
+      <li><a href="#traceurs">Traceurs et cookies</a></li>
       <li><a href="#changements">Changements de cette page</a></li>
     </ol>
   </nav>
@@ -184,7 +186,8 @@ footer nav a{font-size:14px; font-weight:700}
     <h2><span class="n">01</span> Qui gère l'app</h2>
     <p>Flashring est publiée sous la responsabilité de Tristan Leveugle. Il n'y a pas de société : l'éditeur est une personne physique, et c'est l'adulte nommé ci-dessus qui est responsable des données traitées par l'app. Pour toute question, écris à l'adresse en bas de page.</p>
     <p>L'app existe pour deux choses : réveiller à l'heure du premier cours en se basant sur l'emploi du temps scolaire, et — en option, seulement si tu l'actives — échanger des photos ("flammes") avec des amis choisis toi-même dans l'app.</p>
-    <p>Dans la version actuelle, <strong>un compte (pseudo et mot de passe) est nécessaire pour ouvrir l'app</strong>, même pour n'utiliser que le réveil.</p>
+    <p>Pour récupérer ton emploi du temps, Flashring peut se connecter à la plateforme de ton établissement (PRONOTE, directement ou par ton ENT) à ta demande : voir la section 13.</p>
+    <p><strong>Le réveil fonctionne sans compte.</strong> Un compte (pseudo et mot de passe) n'est nécessaire que pour la partie Amis (ajouter des amis, échanger des flammes).</p>
   </section>
 
   <section id="donnees">
@@ -195,8 +198,10 @@ footer nav a{font-size:14px; font-weight:700}
         <tr><th scope="col">Donnée</th><th scope="col">Où</th><th scope="col">Pourquoi</th></tr>
       </thead>
       <tbody>
+        <tr><td>Connexion à ton établissement (PRONOTE) : jeton de connexion, nom affiché, nom de l'établissement, identifiant aléatoire de cette installation, copie de ton emploi du temps pour l'afficher sans réseau</td><td>Sur ton téléphone seulement, dans le coffre sécurisé du système (jamais sauvegardé ni copié vers un autre appareil) ; le jeton et l'identifiant d'installation sont aussi connus de PRONOTE, à qui ils servent à te reconnaître. Jamais envoyés à nos serveurs</td><td>Lire ton emploi du temps sans que tu aies à te reconnecter — détails section 13</td></tr>
+        <tr><td>Ville ou code postal que tu tapes pour trouver ton établissement</td><td>Envoyés au service d'adresses de l'État (api-adresse.data.gouv.fr), qui renvoie des coordonnées ; ces coordonnées (pas ton identité) sont envoyées à l'annuaire d'établissements d'Index Éducation. Rien n'est gardé par Flashring</td><td>Proposer la liste des établissements proches de toi</td></tr>
         <tr><td>Lien de ton emploi du temps (.ics)</td><td>Sur ton téléphone. L'app télécharge ce lien depuis le site de ton établissement (par exemple Pronote), sans passer par nos serveurs</td><td>Calculer l'heure du prochain cours pour régler le réveil</td></tr>
-        <tr><td>Pseudo et mot de passe</td><td>Serveurs Firebase (Google)</td><td>Créer et sécuriser ton compte, nécessaire pour ouvrir l'app</td></tr>
+        <tr><td>Pseudo et mot de passe</td><td>Serveurs Firebase (Google)</td><td>Créer et sécuriser ton compte, seulement si tu utilises la partie Amis</td></tr>
         <tr><td>Nom affiché, photo de profil (facultative), pseudo de l'ami qui t'a invité (facultatif)</td><td>Firebase</td><td>Personnaliser ton profil et gérer l'invitation d'amis</td></tr>
         <tr><td>Date d'acceptation de cette politique et du consentement Amis</td><td>Firebase</td><td>Garder la preuve de ton accord</td></tr>
         <tr><td>Année de naissance</td><td>Firebase, lecture réservée à toi</td><td>Savoir si un accord parental est nécessaire (art. 8 RGPD)</td></tr>
@@ -206,16 +211,17 @@ footer nav a{font-size:14px; font-weight:700}
         <tr><td>Signalements : qui signale, qui est signalé, date, motif facultatif. Jamais la photo</td><td>Firebase, lisible uniquement par l'éditeur</td><td>Traiter les abus et protéger les utilisateurs</td></tr>
         <tr><td>Empreinte (hash) de ton numéro de téléphone, si tu actives "Trouvable par numéro"</td><td>Firebase</td><td>Te faire retrouver par tes amis — détails section 06</td></tr>
         <tr><td>Données techniques d'affichage pub (type d'appareil, pays approximatif, identifiants publicitaires selon ton choix)</td><td>Google AdMob</td><td>Afficher une publicité non personnalisée pour financer l'app — détails section 07</td></tr>
+        <tr><td>Compteurs d'usage anonymes (écrans consultés, ex. "onglet Amis ouvert", "flamme envoyée") — jamais associés à ton pseudo ni à ton compte</td><td>Firebase Analytics (Google)</td><td>Savoir quels écrans de l'app sont vraiment utilisés, pour l'améliorer — détails section 07</td></tr>
         <tr><td>Adresse IP, au moment où l'app récupère sa police d'écriture (Baloo 2)</td><td>Serveurs Google Fonts</td><td>Afficher le texte de l'app avec sa police</td></tr>
         <tr><td>Confirmation d'achat (si tu achètes la suppression des pubs, pas encore disponible)</td><td>Apple / Google, facturation uniquement</td><td>Retirer les publicités</td></tr>
       </tbody>
     </table>
-    <p>L'app ne demande jamais ta géolocalisation, et n'utilise aucun cookie ni outil d'analyse. Elle peut afficher des publicités (jamais personnalisées, section 07) et, si tu l'actives toi-même, accéder à ton numéro et tes contacts pour te suggérer des amis (jamais stockés en clair, section 06).</p>
+    <p>L'app ne demande jamais ta géolocalisation. Elle compte de façon anonyme quels écrans sont consultés (section 07), peut afficher des publicités (jamais personnalisées, même section) et, si tu l'actives toi-même, accéder à ton numéro et tes contacts pour te suggérer des amis (jamais stockés en clair, section 06). Elle n'utilise pas de cookie pour te suivre : voir la section 14 sur les traceurs.</p>
   </section>
 
   <section id="mineurs">
     <h2><span class="n">03</span> Utilisateurs mineurs</h2>
-    <p>Flashring s'adresse aux 13 ans et plus. La majorité des utilisateurs sont mineurs. Un compte peut être créé avant que l'âge soit demandé : l'année de naissance est demandée quand tu ouvres l'onglet Amis pour la première fois. Elle est déclarée par toi, l'app ne peut pas la vérifier.</p>
+    <p>Flashring s'adresse aux 13 ans et plus. La majorité des utilisateurs sont mineurs. L'année de naissance est demandée quand tu crées un compte, avant sa création. Elle est déclarée par toi, l'app ne peut pas la vérifier.</p>
     <p>La partie Amis (photos, ajout de contacts) reste bloquée pour un compte mineur (moins de 18 ans) tant qu'un parent n'a pas donné son accord : un email est envoyé au parent avec un code, que celui-ci doit redonner à son enfant pour débloquer la fonctionnalité. En France, pour les moins de 15 ans, cet accord d'un parent est exigé par la loi quand le traitement repose sur le consentement.</p>
     <div class="card">
       <p style="margin:0"><strong>Limite assumée :</strong> comme l'app n'a pas de serveur applicatif dédié (juste Firebase), ce verrouillage ne résiste pas à un ado qui modifierait directement les requêtes techniques de l'app — il protège contre un usage normal, pas contre un contournement délibéré et technique. On le documente honnêtement plutôt que de prétendre à une garantie qu'on n'a pas.</p>
@@ -226,11 +232,12 @@ footer nav a{font-size:14px; font-weight:700}
     <h2><span class="n">04</span> Pourquoi on peut traiter ces données</h2>
     <ul>
       <li><strong>Réveil (emploi du temps)</strong> — le lien reste sur ton téléphone et ne remonte jamais à l'éditeur. Traitement nécessaire au service que tu demandes (art. 6.1.b RGPD).</li>
-      <li><strong>Compte</strong> (pseudo, mot de passe, nom affiché, photo) — nécessaire pour te fournir le service dans cette version de l'app (art. 6.1.b).</li>
+      <li><strong>Connexion à ton établissement</strong> — nécessaire au service que tu demandes quand tu choisis de relier ton emploi du temps ainsi (art. 6.1.b). Rien ne t'y oblige : tu peux coller le lien de ton emploi du temps ou saisir tes horaires à la main.</li>
+      <li><strong>Compte</strong> (pseudo, mot de passe, nom affiché, photo) — nécessaire pour te fournir la partie Amis, qui demande un compte (art. 6.1.b).</li>
       <li><strong>Partie Amis, flammes, recherche par numéro</strong> — sur ton consentement explicite (art. 6.1.a et art. 7), donné à l'écran de consentement avant la première utilisation. Tu peux le refuser et continuer à utiliser le réveil.</li>
       <li><strong>Accord parental</strong> — art. 8 RGPD, pour les moins de 15 ans en France, avant de traiter des données sur la seule base du consentement de l'enfant.</li>
       <li><strong>Signalements et blocage</strong> — intérêt légitime de protéger les utilisateurs et de modérer les abus (art. 6.1.f).</li>
-      <li><strong>Publicité</strong> — dans l'Espace économique européen, un formulaire de consentement de Google s'affiche. Tu peux changer ton choix dans Amis, Paramètres, Options de confidentialité des pubs.</li>
+      <li><strong>Publicité et mesure d'audience</strong> — dans l'Espace économique européen, un formulaire de consentement de Google s'affiche pour les deux à la fois (même choix, pas un second bandeau) ; sans consentement, ni pub ni compteur ne sont envoyés. Tu peux changer ton choix dans Amis, Paramètres, Options de confidentialité des pubs.</li>
       <li><strong>Police d'écriture</strong> — intérêt légitime d'afficher correctement l'app (art. 6.1.f).</li>
     </ul>
   </section>
@@ -254,20 +261,21 @@ footer nav a{font-size:14px; font-weight:700}
   </section>
 
   <section id="publicite">
-    <h2><span class="n">07</span> Publicité et achats intégrés</h2>
+    <h2><span class="n">07</span> Publicité, mesure d'audience et achats intégrés</h2>
     <p>Pour financer les frais du projet (hébergement Firebase, compte développeur), l'app peut afficher des publicités fournies par <strong>Google AdMob</strong>, et propose un achat intégré optionnel (suppression des pubs) pour les retirer, pas encore disponible dans la première version.</p>
     <div class="card">
       <p style="margin:0"><strong>Pas de publicité ciblée.</strong> Comme la majorité des utilisateurs sont mineurs (cf. section 03), l'app indique explicitement à Google que son audience est adolescente (paramètre <em>ageRestrictedTreatment</em> du SDK AdMob) — les publicités affichées ne sont donc jamais personnalisées à partir d'un profil, d'une localisation précise ou d'un historique de navigation. Seules des données techniques minimales (type d'appareil, pays approximatif) sont transmises à Google au moment de l'affichage.</p>
     </div>
+    <p>L'app utilise aussi <strong>Firebase Analytics</strong> (Google) pour compter, de façon anonyme, quels écrans sont consultés et quelques actions clés (envoi d'un selfie, ouverture d'une flamme) — jamais ton pseudo, ton identifiant de compte ou le contenu d'une flamme. Ça sert uniquement à savoir quelles parties de l'app sont vraiment utilisées, pas à te suivre en dehors de Flashring ni à construire un profil publicitaire. Ce comptage suit exactement le même choix de consentement que la publicité (bloc ci-dessus) : refuser l'un désactive l'autre.</p>
     <p>Les achats intégrés sont entièrement gérés par Apple (App Store) ou Google (Play Store) : Flashring ne reçoit ni ne stocke jamais tes informations de paiement, seulement la confirmation que l'achat a eu lieu.</p>
-    <p>Google agit ici comme sous-traitant publicitaire (art. 28 RGPD) — voir la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a> pour le détail de son propre traitement.</p>
+    <p>Google agit ici comme sous-traitant publicitaire et technique (art. 28 RGPD) — voir la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a> pour le détail de son propre traitement.</p>
   </section>
 
   <section id="partage">
     <h2><span class="n">08</span> Qui a accès aux données</h2>
     <p>Personne d'autre que toi et les amis que tu ajoutes toi-même ne voit ton pseudo, ta liste d'amis ou tes photos dans l'app. Techniquement, les données transitent par et sont stockées chez <strong>Google (Firebase)</strong>, qui agit comme sous-traitant (art. 28 RGPD) : Google n'utilise pas ces données à ses propres fins, les conditions Firebase incluent les clauses RGPD nécessaires.</p>
     <p>L'éditeur dispose d'un accès administrateur à la base Firebase. Il n'y accède que pour traiter un signalement, une demande d'un utilisateur ou un incident technique.</p>
-    <p>Flashring ne vend ni ne loue aucune donnée. Les seuls tiers qui en reçoivent sont Firebase (hébergement, sous-traitant), Google AdMob (publicité non personnalisée, section 07) et Google Fonts (police d'écriture), jamais à but de revente commerciale. Cette page web est hébergée par GitHub.</p>
+    <p>Flashring ne vend ni ne loue aucune donnée. Quand tu te connectes à ton établissement, la plateforme de ton établissement (PRONOTE d'Index Éducation, ou ton ENT) reçoit tes demandes de connexion, comme si tu utilisais son site : c'est elle, et non Flashring, qui reçoit ton mot de passe. Les seuls autres tiers qui en reçoivent sont Firebase (hébergement, sous-traitant), Google AdMob (publicité non personnalisée, section 07), Firebase Analytics (compteurs d'usage anonymes, même section) et Google Fonts (police d'écriture), jamais à but de revente commerciale. Le service d'adresses de l'État reçoit la ville ou le code postal que tu tapes pour chercher ton établissement. Cette page web est hébergée par GitHub.</p>
   </section>
 
   <section id="conservation">
@@ -277,6 +285,7 @@ footer nav a{font-size:14px; font-weight:700}
       <tbody>
         <tr><td>Compte, pseudo, liste d'amis</td><td>Tant que le compte existe. « Supprimer mon compte » efface le profil, le pseudo, les amis, l'empreinte du numéro et le verrou parental</td></tr>
         <tr><td>Flamme envoyée</td><td>Jusqu'à ouverture par le destinataire, et 24h maximum si elle n'est jamais ouverte (suppression automatique, cohérente avec la règle de série ci-dessous)</td></tr>
+        <tr><td>Connexion à ton établissement (jeton, nom affiché, copie de l'emploi du temps)</td><td>Sur ton téléphone seulement. Effacés quand tu te déconnectes de ton établissement (Réglages), quand tu supprimes ton compte Flashring, ou au premier lancement après une réinstallation de l'app</td></tr>
         <tr><td>Code de vérification parentale</td><td>Le temps de la vérification, puis supprimé</td></tr>
         <tr><td>Signalements</td><td>12 mois, conservés même après la suppression du compte, pour la sécurité des autres utilisateurs</td></tr>
         <tr><td>Sauvegardes techniques de Google</td><td>Aucune sauvegarde automatique programmée n'est activée sur ce projet (la protection contre la suppression et la restauration à un instant T sont désactivées). Seul un historique technique de courte durée (1 heure) existe, pour la cohérence des lectures</td></tr>
@@ -310,8 +319,27 @@ footer nav a{font-size:14px; font-weight:700}
     <p>Google (comptes, publicité, police d'écriture) et GitHub (cette page web) peuvent traiter des données, dont ton adresse IP, sur des serveurs situés aux États-Unis. Ces transferts sont encadrés par les clauses contractuelles types de la Commission européenne et/ou le cadre de protection des données UE–États-Unis, selon le prestataire.</p>
   </section>
 
+  <section id="etablissement">
+    <h2><span class="n">13</span> Connexion à ton établissement</h2>
+    <p>Dans Réglages, « Connecter mon emploi du temps » te propose quatre façons de relier ton emploi du temps. Deux d'entre elles se connectent à la plateforme de ton établissement : <strong>PRONOTE</strong> (directement, par QR code, ou par ton ENT comme monlycée.net).</p>
+    <ul>
+      <li><strong>Ton mot de passe n'est jamais vu par Flashring.</strong> Tu le tapes sur la vraie page de PRONOTE ou de ton ENT, affichée dans l'app, ou dans le champ d'une fenêtre qui l'envoie à PRONOTE sans le garder.</li>
+      <li><strong>Ce qui reste.</strong> PRONOTE donne à ton téléphone un jeton de connexion, qui remplace le mot de passe pour les connexions suivantes. Il est gardé chiffré par le système (Keychain sur iPhone, Keystore sur Android), n'est jamais sauvegardé ni copié sur un autre appareil, et ne quitte jamais ton téléphone vers nos serveurs.</li>
+      <li><strong>Ce que Flashring lit.</strong> Seulement ton emploi du temps, pour calculer l'heure de ton réveil. Pas tes notes, tes absences ni tes messages.</li>
+      <li><strong>Où ça va.</strong> Les demandes partent de ton téléphone vers PRONOTE (ou ton ENT). Aucune donnée scolaire n'est envoyée à un serveur de Flashring.</li>
+      <li><strong>Les arrêter.</strong> « Me déconnecter » (Réglages) efface le jeton et les données associées de ton téléphone. Supprimer ton compte Flashring les efface aussi. Tu peux aussi révoquer l'accès de l'appareil depuis ton compte PRONOTE, ou changer ton mot de passe.</li>
+    </ul>
+    <p>Flashring n'est pas affilié à Index Éducation (éditeur de PRONOTE) ni à ton ENT : chaque élève utilise son propre compte. Les conditions et la politique de confidentialité de ton établissement et de sa plateforme s'appliquent à leur côté de la connexion.</p>
+  </section>
+
+  <section id="traceurs">
+    <h2><span class="n">14</span> Traceurs et cookies</h2>
+    <p>Flashring n'utilise pas de cookies pour te suivre. Deux outils peuvent lire ou écrire un identifiant sur ton appareil, et <strong>seulement si tu les acceptes</strong> : la publicité (Google AdMob) et la mesure d'audience (Firebase Analytics). Un écran te demande ton choix avant leur premier usage (formulaire de consentement de Google dans l'Espace économique européen, autorisation de suivi d'Apple sur iPhone). Tu peux le changer à tout moment dans Amis, Paramètres, Options de confidentialité des pubs. Refuser ne bloque aucune fonction de l'app.</p>
+    <p>Quand tu te connectes à ton établissement avec ton ENT, tu passes par la page web de ton ENT, affichée dans Flashring. Cette page utilise ses propres cookies, indispensables à ta connexion ; Flashring ne les utilise pas pour autre chose et les efface dès que tu fermes la fenêtre.</p>
+  </section>
+
   <section id="changements">
-    <h2><span class="n">13</span> Changements de cette page</h2>
+    <h2><span class="n">15</span> Changements de cette page</h2>
     <p>Cette page peut être mise à jour si l'app évolue (nouvelle fonctionnalité, nouveau type de donnée). La date en haut de page indique la dernière version. Les changements importants seront signalés dans l'app.</p>
   </section>
 
@@ -328,7 +356,6 @@ footer nav a{font-size:14px; font-weight:700}
       <a href="privacy-policy.html">Politique de confidentialité</a>
       <a href="mentions-legales.html">Mentions légales</a>
       <a href="cgu.html">Conditions d'utilisation</a>
-      <a href="accessibilite.html">Accessibilité</a>
       <a href="mailto:hugodrone.2025@gmail.com">Contact</a>
     </nav>
     Flashring — document informatif, ne constitue pas un avis juridique.
