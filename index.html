@@ -158,7 +158,7 @@ footer nav a{font-size:14px; font-weight:700}
   <div class="meta">
     <span><strong>Responsable du traitement</strong> — Tristan Leveugle, personne physique. Voir aussi les <a href="mentions-legales.html">mentions légales</a>.</span>
     <span><strong>Contact</strong> — hugodrone.2025@gmail.com</span>
-    <span><strong>Dernière mise à jour</strong> — 19 octobre 2026</span>
+    <span><strong>Dernière mise à jour</strong> — 21 octobre 2026</span>
   </div>
 
   <nav class="toc" aria-label="Sommaire">
@@ -201,6 +201,7 @@ footer nav a{font-size:14px; font-weight:700}
         <tr><td>Connexion à ton établissement (PRONOTE) : jeton de connexion, nom affiché, nom de l'établissement, identifiant aléatoire de cette installation, copie de ton emploi du temps pour l'afficher sans réseau</td><td>Sur ton téléphone seulement, dans le coffre sécurisé du système (jamais sauvegardé ni copié vers un autre appareil) ; le jeton et l'identifiant d'installation sont aussi connus de PRONOTE, à qui ils servent à te reconnaître. Jamais envoyés à nos serveurs</td><td>Lire ton emploi du temps sans que tu aies à te reconnecter — détails section 13</td></tr>
         <tr><td>Ville ou code postal que tu tapes pour trouver ton établissement</td><td>Envoyés au service d'adresses de l'État (api-adresse.data.gouv.fr), qui renvoie des coordonnées ; ces coordonnées (pas ton identité) sont envoyées à l'annuaire d'établissements d'Index Éducation. Rien n'est gardé par Flashring</td><td>Proposer la liste des établissements proches de toi</td></tr>
         <tr><td>Lien de ton emploi du temps (.ics)</td><td>Sur ton téléphone. L'app télécharge ce lien depuis le site de ton établissement (par exemple Pronote), sans passer par nos serveurs</td><td>Calculer l'heure du prochain cours pour régler le réveil</td></tr>
+        <tr><td>Bus ou métro (Île-de-France), si tu l'ajoutes : l'arrêt, les lignes, la direction et tes préférences (prévenir ou avancer le réveil)</td><td>Sur ton téléphone, rangés par compte comme tes autres réglages. Au moment de lire les passages, l'identifiant de l'arrêt (rien d'autre) est envoyé à notre serveur (Cloud Functions de Google, zone Europe), qui interroge Île-de-France Mobilités</td><td>Prévenir ou avancer ton réveil quand ton véhicule est supprimé ou en retard — détails section 15</td></tr>
         <tr><td>Pseudo et mot de passe</td><td>Serveurs Firebase (Google)</td><td>Créer et sécuriser ton compte, seulement si tu utilises la partie Amis</td></tr>
         <tr><td>Nom affiché, photo de profil (facultative), pseudo de l'ami qui t'a invité (facultatif)</td><td>Firebase</td><td>Personnaliser ton profil et gérer l'invitation d'amis</td></tr>
         <tr><td>Date d'acceptation de cette politique et du consentement Amis</td><td>Firebase</td><td>Garder la preuve de ton accord</td></tr>
@@ -338,8 +339,20 @@ footer nav a{font-size:14px; font-weight:700}
     <p>Quand tu te connectes à ton établissement avec ton ENT, tu passes par la page web de ton ENT, affichée dans Flashring. Cette page utilise ses propres cookies, indispensables à ta connexion ; Flashring ne les utilise pas pour autre chose et les efface dès que tu fermes la fenêtre.</p>
   </section>
 
+  <section id="transports">
+    <h2><span class="n">15</span> Bus et métro (Île-de-France)</h2>
+    <p>Si tu ajoutes ton bus ou ton métro dans Réglages, Flashring peut te prévenir, ou avancer ton réveil, quand ton véhicule est supprimé ou en retard. C'est facultatif.</p>
+    <ul>
+      <li><strong>Ce que tu choisis.</strong> Un arrêt (par son nom ou par ta ligne), les lignes et ta direction. Ce choix est gardé sur ton téléphone, rangé par compte comme tes autres réglages. Flashring n'utilise pas ta position.</li>
+      <li><strong>Ce qui part vers nos serveurs.</strong> Le matin, avant ton réveil, l'app demande à notre serveur les prochains passages à ton arrêt. La demande contient uniquement l'identifiant de l'arrêt : pas de nom, pas de compte, pas d'identifiant d'appareil. Notre serveur la transmet à Île-de-France Mobilités et garde la réponse une minute en mémoire, partagée entre les élèves qui ont le même arrêt. Rien n'est enregistré dans notre base de données.</li>
+      <li><strong>Adresse IP.</strong> Comme pour tout accès à internet, notre hébergeur (Google Cloud) voit ton adresse IP dans ses journaux techniques.</li>
+      <li><strong>Pour finir.</strong> Pour retirer ton bus ou ton métro, touche « Retirer mon bus ou métro » dans sa page de réglage : le choix est effacé de ton téléphone.</li>
+    </ul>
+    <p>Les horaires viennent d'Île-de-France Mobilités (portail PRIM), publiés sous licence ouverte ODbL. Flashring n'est pas affilié à Île-de-France Mobilités ni aux transporteurs.</p>
+  </section>
+
   <section id="changements">
-    <h2><span class="n">15</span> Changements de cette page</h2>
+    <h2><span class="n">16</span> Changements de cette page</h2>
     <p>Cette page peut être mise à jour si l'app évolue (nouvelle fonctionnalité, nouveau type de donnée). La date en haut de page indique la dernière version. Les changements importants seront signalés dans l'app.</p>
   </section>
 
