@@ -158,7 +158,7 @@ footer nav a{font-size:14px; font-weight:700}
   <div class="meta">
     <span><strong>Responsable du traitement</strong> — Tristan Leveugle, personne physique. Voir aussi les <a href="mentions-legales.html">mentions légales</a>.</span>
     <span><strong>Contact</strong> — hugodrone.2025@gmail.com</span>
-    <span><strong>Dernière mise à jour</strong> — 22 octobre 2026</span>
+    <span><strong>Dernière mise à jour</strong> — 1er novembre 2026</span>
   </div>
 
   <nav class="toc" aria-label="Sommaire">
@@ -199,6 +199,7 @@ footer nav a{font-size:14px; font-weight:700}
       </thead>
       <tbody>
         <tr><td>Connexion à ton établissement (PRONOTE) : jeton de connexion, nom affiché, nom de l'établissement, identifiant aléatoire de cette installation, copie de ton emploi du temps pour l'afficher sans réseau</td><td>Sur ton téléphone seulement, dans le coffre sécurisé du système (jamais sauvegardé ni copié vers un autre appareil) ; le jeton et l'identifiant d'installation sont aussi connus de PRONOTE, à qui ils servent à te reconnaître. Jamais envoyés à nos serveurs</td><td>Lire ton emploi du temps sans que tu aies à te reconnecter — détails section 13</td></tr>
+        <tr><td>Connexion à ton établissement (ÉcoleDirecte) : identifiant, mot de passe, clé d'appareil donnée par ÉcoleDirecte après la question de sécurité, nom affiché, copie de ton emploi du temps pour l'afficher sans réseau</td><td>Sur ton téléphone seulement, dans le coffre sécurisé du système (Keychain sur iPhone, Keystore sur Android ; jamais sauvegardé ni copié vers un autre appareil). Envoyés uniquement à ÉcoleDirecte, jamais à nos serveurs</td><td>Te reconnecter à ÉcoleDirecte pour lire ton emploi du temps, car ÉcoleDirecte ne fournit pas de jeton qui remplace le mot de passe — détails section 13</td></tr>
         <tr><td>Ville ou code postal que tu tapes pour trouver ton établissement</td><td>Envoyés au service d'adresses de l'État (api-adresse.data.gouv.fr), qui renvoie des coordonnées ; ces coordonnées (pas ton identité) sont envoyées à l'annuaire d'établissements d'Index Éducation. Rien n'est gardé par Flashring</td><td>Proposer la liste des établissements proches de toi</td></tr>
         <tr><td>Lien de ton emploi du temps (.ics)</td><td>Sur ton téléphone, dans la partie sécurisée du système (Keychain sur iPhone, Keystore sur Android). L'app télécharge ce lien depuis le site de ton établissement (par exemple Pronote), sans passer par nos serveurs, et n'accepte que des liens https vers un vrai calendrier</td><td>Calculer l'heure du prochain cours pour régler le réveil</td></tr>
         <tr><td>Bus ou métro (Île-de-France), si tu l'ajoutes : l'arrêt, les lignes, la direction et tes préférences (prévenir ou avancer le réveil)</td><td>Sur ton téléphone, rangés par compte comme tes autres réglages. Au moment de lire les passages, l'identifiant de l'arrêt (rien d'autre) est envoyé à notre serveur (Cloud Functions de Google, zone Europe), qui interroge Île-de-France Mobilités</td><td>Prévenir ou avancer ton réveil quand ton véhicule est supprimé ou en retard — détails section 15</td></tr>
@@ -323,15 +324,15 @@ footer nav a{font-size:14px; font-weight:700}
 
   <section id="etablissement">
     <h2><span class="n">13</span> Connexion à ton établissement</h2>
-    <p>Dans Réglages, « Connecter mon emploi du temps » te propose quatre façons de relier ton emploi du temps. Deux d'entre elles se connectent à la plateforme de ton établissement : <strong>PRONOTE</strong> (directement, par QR code, ou par ton ENT comme monlycée.net).</p>
+    <p>Dans Réglages, « Connecter mon emploi du temps » te propose quatre façons de relier ton emploi du temps. Deux d'entre elles se connectent à la plateforme de ton établissement : <strong>PRONOTE</strong> (directement, par QR code, ou par ton ENT comme monlycée.net) et <strong>ÉcoleDirecte</strong> (avec ton identifiant et ton mot de passe).</p>
     <ul>
-      <li><strong>Ton mot de passe n'est jamais envoyé à nos serveurs, ni conservé.</strong> Avec la connexion par la page de ton établissement ou de ton ENT, tu le tapes sur la vraie page, affichée dans l'app : Flashring ne le voit pas. Avec « Mon identifiant PRONOTE », tu le tapes dans une fenêtre de l'app, qui l'envoie directement à PRONOTE et ne le garde pas.</li>
-      <li><strong>Ce qui reste.</strong> PRONOTE donne à ton téléphone un jeton de connexion, qui remplace le mot de passe pour les connexions suivantes. Il est gardé chiffré par le système (Keychain sur iPhone, Keystore sur Android), n'est jamais sauvegardé ni copié sur un autre appareil, et ne quitte jamais ton téléphone vers nos serveurs.</li>
+      <li><strong>Ton mot de passe n'est jamais envoyé à nos serveurs.</strong> Avec la connexion PRONOTE par la page de ton établissement ou de ton ENT, tu le tapes sur la vraie page, affichée dans l'app : Flashring ne le voit pas. Avec « Mon identifiant PRONOTE », tu le tapes dans une fenêtre de l'app, qui l'envoie directement à PRONOTE et ne le garde pas. <strong>Avec ÉcoleDirecte, il est conservé sur ton téléphone</strong> : ÉcoleDirecte ne donne pas de jeton qui le remplace, donc Flashring garde ton identifiant et ton mot de passe dans le coffre sécurisé du système (Keychain sur iPhone, Keystore sur Android), sans sauvegarde ni copie vers un autre appareil, et ne les envoie qu'à ÉcoleDirecte pour te reconnecter.</li>
+      <li><strong>Ce qui reste.</strong> Pour ÉcoleDirecte : ton identifiant, ton mot de passe et la clé d'appareil qui évite de répondre à la question de sécurité à chaque fois (voir ci-dessus). Pour PRONOTE : PRONOTE donne à ton téléphone un jeton de connexion, qui remplace le mot de passe pour les connexions suivantes. Il est gardé chiffré par le système (Keychain sur iPhone, Keystore sur Android), n'est jamais sauvegardé ni copié sur un autre appareil, et ne quitte jamais ton téléphone vers nos serveurs.</li>
       <li><strong>Ce que Flashring lit.</strong> Seulement ton emploi du temps, pour calculer l'heure de ton réveil. Pas tes notes, tes absences ni tes messages.</li>
-      <li><strong>Où ça va.</strong> Les demandes partent de ton téléphone vers PRONOTE (ou ton ENT). Aucune donnée scolaire n'est envoyée à un serveur de Flashring.</li>
-      <li><strong>Les arrêter.</strong> « Me déconnecter » (Réglages) efface le jeton et les données associées de ton téléphone. Supprimer ton compte Flashring les efface aussi. Tu peux aussi révoquer l'accès de l'appareil depuis ton compte PRONOTE, ou changer ton mot de passe.</li>
+      <li><strong>Où ça va.</strong> Les demandes partent de ton téléphone vers PRONOTE (ou ton ENT) ou vers ÉcoleDirecte. Aucune donnée scolaire n'est envoyée à un serveur de Flashring.</li>
+      <li><strong>Les arrêter.</strong> « Me déconnecter » (Réglages) efface le jeton et les données associées de ton téléphone. Supprimer ton compte Flashring les efface aussi. Tu peux aussi révoquer l'accès de l'appareil depuis ton compte PRONOTE, ou changer ton mot de passe (PRONOTE ou ÉcoleDirecte).</li>
     </ul>
-    <p>Flashring n'est pas affilié à Index Éducation (éditeur de PRONOTE) ni à ton ENT : chaque élève utilise son propre compte. Les conditions et la politique de confidentialité de ton établissement et de sa plateforme s'appliquent à leur côté de la connexion.</p>
+    <p>Flashring n'est pas affilié à Index Éducation (éditeur de PRONOTE), à Aplim (éditeur d'ÉcoleDirecte) ni à ton ENT : chaque élève utilise son propre compte. Les conditions et la politique de confidentialité de ton établissement et de sa plateforme s'appliquent à leur côté de la connexion.</p>
   </section>
 
   <section id="traceurs">
